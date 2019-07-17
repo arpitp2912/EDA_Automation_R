@@ -1,0 +1,10 @@
+Package: EDA
+Type: Package
+Title: Automates Exploratory Data Analysis Process for a Data
+Version: 0.1.0
+Author: Arpit Prakash
+Maintainer: Arpit Prakash <arpitprakash29@gmail.com>
+Description: The process of exploration might become especially when we are dealing with data sets that contains a large number of variables. This package helps to reduce the work and generate plots for numerical and categorical variables.
+Imports: corrplot
+RoxygenNote: 6.1.1
+Encoding: UTF-8
