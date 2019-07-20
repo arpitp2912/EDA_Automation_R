@@ -32,7 +32,7 @@ eda_graphs <- function(data,var=0,folder = getwd())
     {
       data_level = length(levels(factor(data[,i])))
       if(data_level > 10){
-        png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = '')) #NOTE this step
+        png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = '')) 
 
         par(mfrow=c(2,1))
         boxplot(data[,i], main = paste("Boxplot of", names(data)[i]),
@@ -44,7 +44,7 @@ eda_graphs <- function(data,var=0,folder = getwd())
         dev.off()
       }
       else{
-        png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = '')) #NOTE this step
+        png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = ''))
         par(mfrow=c(2,1))
         pie(table(data[,i]), main = paste("Pie Chart of", names(data)[i]),
             col = topo.colors(data_level),radius = 1
