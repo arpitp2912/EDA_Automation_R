@@ -35,27 +35,37 @@ eda_graphs <- function(data,var=0,folder = getwd())
         png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = '')) 
 
         par(mfrow=c(2,1))
+        #Box Plot
         boxplot(data[,i], main = paste("Boxplot of", names(data)[i]),
                 ylab = names(data)[i], col = "maroon", border = "grey5",
                 horizontal = T)
-
+        # Histogram
         hist(data[,i], main = paste("Histogram of", names(data)[i]),
              xlab = names(data)[i], ylab = "Frequency", col = "lightgreen", border=F)
         dev.off()
+        # Density Plot
+        png(filename = paste(folder,paste('/density_',names(data)[i], ".png", sep=""),sep = ''))
+        
+        plot(density(data[,i]), frame = FALSE, col = "lightblue",
+             main = paste("Density plot of", names(data)[i]),
+             xlab = names(data)[i])
+        polygon(density(data[,i]), col = "lightblue")
+        dev.off()
       }
       else{
-        png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = ''))
+        png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = '')) 
         par(mfrow=c(2,1))
+        # Pie Chart
         pie(table(data[,i]), main = paste("Pie Chart of", names(data)[i]),
             col = topo.colors(data_level),radius = 1
         )
-
+        # Bar Plot
         barplot(table(data[,i]), main = paste("Barplot of", names(data)[i]),
                 xlab = names(data)[i], ylab = "Frequency", col = "lightgreen")
 
         dev.off()
       }
-      png(filename = paste(folder,"/Correlation_plot.png", sep=""))
+      png(filename = paste('Correlation plot', ".png", sep=""))
       par(mfrow = c(1,1))
 
       corrplot(cor(data), method="color",
@@ -67,13 +77,7 @@ eda_graphs <- function(data,var=0,folder = getwd())
       )
       dev.off()
     }
-    png(filename = paste(folder,paste('/density_',names(data)[i], ".png", sep=""),sep = ''))
-
-    plot(density(data[,i]), frame = FALSE, col = "lightblue",
-         main = paste("Density plot of", names(data)[i]),
-         xlab = names(data)[i])
-    polygon(density(data[,i]), col = "lightblue")
-    dev.off()
+    
   }
 
 }
