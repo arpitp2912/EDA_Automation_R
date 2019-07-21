@@ -32,20 +32,24 @@ eda_graphs <- function(data,var=0,folder = getwd())
     {
       data_level = length(levels(factor(data[,i])))
       if(data_level > 10){
-        png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = '')) 
+        png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = ''))
 
         par(mfrow=c(2,1))
         #Box Plot
         boxplot(data[,i], main = paste("Boxplot of", names(data)[i]),
                 ylab = names(data)[i], col = "maroon", border = "grey5",
                 horizontal = T)
+
         # Histogram
+
         hist(data[,i], main = paste("Histogram of", names(data)[i]),
              xlab = names(data)[i], ylab = "Frequency", col = "lightgreen", border=F)
         dev.off()
+
         # Density Plot
+
         png(filename = paste(folder,paste('/density_',names(data)[i], ".png", sep=""),sep = ''))
-        
+
         plot(density(data[,i]), frame = FALSE, col = "lightblue",
              main = paste("Density plot of", names(data)[i]),
              xlab = names(data)[i])
@@ -53,13 +57,17 @@ eda_graphs <- function(data,var=0,folder = getwd())
         dev.off()
       }
       else{
-        png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = '')) 
+        png(filename = paste(folder,paste('/',names(data)[i], ".png", sep=""),sep = ''))
         par(mfrow=c(2,1))
+
         # Pie Chart
+
         pie(table(data[,i]), main = paste("Pie Chart of", names(data)[i]),
             col = topo.colors(data_level),radius = 1
         )
+
         # Bar Plot
+
         barplot(table(data[,i]), main = paste("Barplot of", names(data)[i]),
                 xlab = names(data)[i], ylab = "Frequency", col = "lightgreen")
 
@@ -67,6 +75,8 @@ eda_graphs <- function(data,var=0,folder = getwd())
       }
       png(filename = paste('Correlation plot', ".png", sep=""))
       par(mfrow = c(1,1))
+
+      # Correlation Matrix Heatmap
 
       corrplot(cor(data), method="color",
                diag=FALSE, # tl.pos="d",
@@ -77,7 +87,7 @@ eda_graphs <- function(data,var=0,folder = getwd())
       )
       dev.off()
     }
-    
+
   }
 
 }
