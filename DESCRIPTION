@@ -8,3 +8,4 @@ Description: The process of exploration might become especially when we are deal
 Imports: corrplot
 RoxygenNote: 6.1.1
 Encoding: UTF-8
+License: GPL-2
